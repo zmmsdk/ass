@@ -10,7 +10,7 @@ def harbor_project = "eureka-security-server"
 def harbor_auth = "e4b5d44b-b933-42a8-9746-44dcc07af3d4"
 // #!groovy
 pipeline {
-  agent any
+  agent { node { label "node1" } }
 //工具名称必须在Jenkins 管理Jenkins → 全局工具配置中预配置。
        tools {
         nodejs 'NodeJS 15.5.1'
