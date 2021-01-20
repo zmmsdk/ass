@@ -10,7 +10,7 @@ def harbor_project = "eureka-security-server"
 def harbor_auth = "e4b5d44b-b933-42a8-9746-44dcc07af3d4"
 // #!groovy
 pipeline {
-  agent { node { label "node1" } }
+  agent any
 //工具名称必须在Jenkins 管理Jenkins → 全局工具配置中预配置。
        tools {
         nodejs 'NodeJS 15.5.1'
@@ -101,12 +101,6 @@ pipeline {
                 echo 'Deploying'
 
 
-                // sh "sh -c 'echo DOCKER_OPTS=\"--insecure-registry 39.101.135.227:85\" >> /etc/default/docker'"
-                // sh 'docker restart'
-
-                echo 'docker 重启成功'
-// docker tag registry:2.3.0 192.168.33.18:5000/library/registry:2.3.0
-// docker push 192.168.33.18:5000/library/registry:2.3.0
                 sh 'docker login  172.26.111.246:85 -u admin -p Harbor12345'      
 
                 // echo 'Harbor登录成功'
