@@ -106,15 +106,28 @@ pipeline {
 
                 // echo 'Harbor登录成功'
                 // sh 'docker build Dockerfile'
-                
-
-                sh 'docker tag goharbor/nginx-photon:v1.9.2 172.26.111.246:85/harbor/nginx:latest'
-                sh 'docker push 172.26.111.246:85/harbor/nginx:latest'
+              
+                echo "image build"
+                sh "cp /root/build-devops/Dockerfile $workspace"
+                sh "cp /root/build-devops/k8s.ymal $workspace"
+                sh "dokcer build -t 172.26.111.246:85/harbor/xiaomweb:v1.0 ."
+                //sh 'docker tag goharbor/nginx-photon:v1.9.2 172.26.111.246:85/harbor/nginx:latest'
+                //sh 'docker push 172.26.111.246:85/harbor/nginx:latest'
+                sh 'docker push 172.26.111.246:85/harbor/xiaomweb:v1.0'
                 // sh 'mvn clean deploy'  # 此处调用脚本或者ansible、saltstak，部署到远程
 
                 //  sh 'kubectl create -f ./dev-pod.Yaml'
             }
             
+        }
+      stage('deploy'){
+        steps{
+          scripts{
+            sh "kubectl create -f k8s.yaml"
+            sh "sleep 10"
+            echo "查看部署状态"
+            sh "kubectl get pod|grep xiaom"
+          }
         }
         // stage('Deploy') {
         //     when { 
