@@ -122,7 +122,6 @@ pipeline {
         }
       stage('deploy'){
         steps{
-          scripts{
             sh "kubectl create -f k8s.yaml"
             sh "sleep 10"
             echo "查看部署状态"
