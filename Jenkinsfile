@@ -127,7 +127,7 @@ pipeline {
             echo "查看部署状态"
             sh "kubectl get pod|grep xiaom"
           }
-        }
+        
       }
         // stage('Deploy') {
         //     when { 
