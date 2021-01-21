@@ -58,6 +58,7 @@ pipeline {
         stage('init') {
            steps {
             script{
+              echo "init"
               //def dockerPath = tool 'docker' //全局配置里的docker
               //env.PATH = "${dockerPath}/bin:${env.PATH}" //添加了系统环境变量上
             }
