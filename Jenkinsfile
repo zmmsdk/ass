@@ -108,7 +108,7 @@ pipeline {
                 // sh 'docker build Dockerfile'
                 
 
-                sh 'docker tag goharbor/nginx-photon:v1.9.2 http://172.26.111.246:85/harbor/nginx:latest'
+                sh 'docker tag goharbor/nginx-photon:v1.9.2 172.26.111.246:85/harbor/nginx:latest'
                 sh 'docker push 172.26.111.246:85/harbor/nginx:latest'
                 // sh 'mvn clean deploy'  # 此处调用脚本或者ansible、saltstak，部署到远程
 
