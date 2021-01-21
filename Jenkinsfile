@@ -110,7 +110,7 @@ pipeline {
                 echo "image build"
                 sh "cp /root/build-devops/Dockerfile $workspace"
                 sh "cp /root/build-devops/k8s.yaml $workspace"
-                sh "dokcer build -t 172.26.111.246:85/harbor/xiaomweb:v1.0 ."
+                sh "docker build -t 172.26.111.246:85/harbor/xiaomweb:v1.0 ."
                 //sh 'docker tag goharbor/nginx-photon:v1.9.2 172.26.111.246:85/harbor/nginx:latest'
                 //sh 'docker push 172.26.111.246:85/harbor/nginx:latest'
                 sh 'docker push 172.26.111.246:85/harbor/xiaomweb:v1.0'
