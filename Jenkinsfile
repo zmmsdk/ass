@@ -12,12 +12,12 @@ def harbor_auth = "e4b5d44b-b933-42a8-9746-44dcc07af3d4"
 pipeline {
   agent any
 //工具名称必须在Jenkins 管理Jenkins → 全局工具配置中预配置。
-       tools {
-        nodejs 'NodeJS 15.5.1'
+       //tools {
+       // nodejs 'NodeJS 15.5.1'
    
      
         // gradle "gradle"
-    }
+    //}
     // 指定一个小时的全局执行超时，之后Jenkins将中止Pipeline运行
     // options {
     //     timeout(time: 1, unit: 'HOURS') 
@@ -74,15 +74,15 @@ pipeline {
           stage('Linting') {
             steps {
                script {
-                sh 'npm config set registry https://registry.npm.taobao.org' 
-                sh 'npm config get registry' 
+                sh 'source /etc/profile && npm config set registry https://registry.npm.taobao.org' 
+                sh 'source /etc/profile && npm config get registry' 
                 // sh 'cnpm install'
 
                
                    
 
-                sh 'npm install'
-                sh 'npm run build'
+                sh 'source /etc/profile && npm install'
+                sh 'source /etc/profile && npm run build'
                }
             }
         }   
