@@ -129,6 +129,7 @@ pipeline {
             sh "kubectl get pod|grep xiaom"
           }
         }
+      }
         // stage('Deploy') {
         //     when { 
         //         allOf {
