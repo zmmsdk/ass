@@ -110,12 +110,12 @@ pipeline {
                 echo "image build"
                 sh "cp /root/build-devops/Dockerfile $workspace"
                 sh "cp /root/build-devops/k8s.yaml $workspace"
-                sh "docker build -t 172.26.111.246:85/harbor/xiaomweb:v1.0 ."
+              sh "docker build -t 172.26.111.246:85/harbor/xiaomweb:${PROJECT_VERSION} ."
                 //sh 'docker tag goharbor/nginx-photon:v1.9.2 172.26.111.246:85/harbor/nginx:latest'
                 //sh 'docker push 172.26.111.246:85/harbor/nginx:latest'
-                sh 'docker push 172.26.111.246:85/harbor/xiaomweb:v1.0'
+                sh 'docker push 172.26.111.246:85/harbor/xiaomweb:${PROJECT_VERSION}'
                 // sh 'mvn clean deploy'  # 此处调用脚本或者ansible、saltstak，部署到远程
-
+                sh "sed -i 's/PROJECT_VERSION/${PROJECT_VERSION}/g' k8s.yaml"
                 //  sh 'kubectl create -f ./dev-pod.Yaml'
             }
             
