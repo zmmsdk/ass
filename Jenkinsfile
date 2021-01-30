@@ -122,7 +122,7 @@ pipeline {
         }
       stage('deploy'){
         steps{
-           // sh "kubectl delete replicationcontrollers xiaomweb && kubectl delete service xiaomweb"
+            sh "kubectl delete replicationcontrollers xiaomweb && kubectl delete service xiaomweb"
             sh "sleep 10"
             sh "kubectl create -f k8s.yaml"
             sh "sleep 10"
